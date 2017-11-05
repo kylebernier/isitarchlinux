@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function getOS() {
+	var userAgent = window.navigator.userAgent,
+	platform = window.navigator.platform,
+	macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+	windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+	iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+	os = null;
+
+		if (macosPlatforms.indexOf(platform) !== -1) {
+			os = 'Mac OS';
+		} else if (iosPlatforms.indexOf(platform) !== -1) {
+			os = 'iOS';
+		} else if (windowsPlatforms.indexOf(platform) !== -1) {
+			os = 'Windows';
+		} else if (/Android/.test(userAgent)) {
+			os = 'Android';
+		} else if (!os && /Linux/.test(platform)) {
+			os = 'Linux';
+		}
+		return os;
+}
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+
+<style>
+html, body, .container {
+    height: 100%;
+}
+.container {
+	display: -webkit-flexbox;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	justify-content: center;
+}
+</style>
+</head>
+
+<body>
+<div id="cont" class="container">
+<h1 style="font-family:'Roboto Slab',serif;font-size:8em;"><script>
+os = getOS();
+if (os == 'Linux') {
+	document.write('Maybe!');
+} else if (os == 'Windows') {
+	document.write('NO, BAD!!!');
+} else if (os == 'IOS') {
+	document.write('No, what did you expect?');
+} else if (os == 'Android') {
+	document.write('Nope.');
+}
+</script></h1>
+</div>
+</body>
+</html>
